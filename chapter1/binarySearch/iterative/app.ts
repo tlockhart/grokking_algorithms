@@ -31,7 +31,7 @@ const binarySearch = (items: number[], item: number): number | null => {
       lowIndex = mid + 1;
     }
    //  console.log(`LowIndex: ${lowIndex}; HighIndex: ${highIndex}`);
-   alert(`LowIndex: ${lowIndex}; HighIndex: ${highIndex}; MID: ${mid}`);
+  //  alert(`LowIndex: ${lowIndex}; HighIndex: ${highIndex}; MID: ${mid}`);
   }
   return null;
 };
