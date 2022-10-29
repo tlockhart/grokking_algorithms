@@ -1,9 +1,23 @@
 import LinkedList from "./LinkedList.js";
+import Node from "./Node.js";
+const appendNode1 = new Node("Have ");
+const appendNode2 = new Node("a ");
+const appendNode3 = new Node("nice ");
+const appendNode4 = new Node("day! ");
+const prependNode1 = new Node("Thanks ");
+const prependNode2 = new Node("for ");
+const prependNode3 = new Node("stopping ");
+const prependNode4 = new Node("by! ");
 const linkedList = new LinkedList("Tony");
-linkedList.append("Have ");
-linkedList.append("a ");
-linkedList.append("nice ");
-linkedList.append("Day!");
+linkedList.append(appendNode1);
+linkedList.append(appendNode2);
+linkedList.append(appendNode3);
+linkedList.append(appendNode4);
+//Prepend notes must be in reverse order
+linkedList.prepend(prependNode4);
+linkedList.prepend(prependNode3);
+linkedList.prepend(prependNode2);
+linkedList.prepend(prependNode1);
 const greeting = `Hello `;
 /********* To Console: ************/
 console.log(`${greeting} ${linkedList.name}!`, linkedList.toConsole());

@@ -1,10 +1,11 @@
+import Node from "./Node.js"
+
 class LinkedList {
   //initialize data
   name: string;
 
   head: any;
   tail: any;
-  // elements: string[] = [];
 
   constructor(name: string) {
     this.name = name;
@@ -15,12 +16,7 @@ class LinkedList {
     this.tail = null;
   }
 
-  append(value: string) {
-
-    const newNode = {
-      value: value,
-      next: null,
-    };
+  append(newNode: Node) {
 
     // EdgeCase: Only update the old tail, if one exists, could be empty list.
     if (this.tail) {
@@ -33,6 +29,19 @@ class LinkedList {
     // Edge Case: If empty list, the head must be set after adding a new one
     if (!this.head) {
       this.head = newNode;
+    }
+  }
+
+  //EdgeCase Empty list, requires setting
+  // head and tail nodes
+  prepend(newNode: Node){
+    if(! this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    else {
+     newNode.next = this.head;
+     this.head = newNode;
     }
   }
 

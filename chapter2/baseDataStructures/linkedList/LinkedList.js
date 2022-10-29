@@ -1,5 +1,4 @@
 class LinkedList {
-    // elements: string[] = [];
     constructor(name) {
         this.name = name;
         // First Element
@@ -7,11 +6,7 @@ class LinkedList {
         // Last Element
         this.tail = null;
     }
-    append(value) {
-        const newNode = {
-            value: value,
-            next: null,
-        };
+    append(newNode) {
         // EdgeCase: Only update the old tail, if one exists, could be empty list.
         if (this.tail) {
             // previous tail next pointer set to newNode
@@ -21,6 +16,18 @@ class LinkedList {
         this.tail = newNode;
         // Edge Case: If empty list, the head must be set after adding a new one
         if (!this.head) {
+            this.head = newNode;
+        }
+    }
+    //EdgeCase Empty list, requires setting
+    // head and tail nodes
+    prepend(newNode) {
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else {
+            newNode.next = this.head;
             this.head = newNode;
         }
     }
