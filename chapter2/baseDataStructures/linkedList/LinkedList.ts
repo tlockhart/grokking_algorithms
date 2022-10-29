@@ -1,4 +1,4 @@
-import Node from "./Node.js"
+import Node from "./Node.js";
 
 class LinkedList {
   //initialize data
@@ -16,8 +16,7 @@ class LinkedList {
     this.tail = null;
   }
 
-  append(newNode: Node) {
-
+  public append(newNode: Node) {
     // EdgeCase: Only update the old tail, if one exists, could be empty list.
     if (this.tail) {
       // previous tail next pointer set to newNode
@@ -34,18 +33,78 @@ class LinkedList {
 
   //EdgeCase Empty list, requires setting
   // head and tail nodes
-  prepend(newNode: Node){
-    if(! this.head) {
+  public prepend(newNode: Node) {
+    if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
-    }
-    else {
-     newNode.next = this.head;
-     this.head = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
     }
   }
 
-  toConsole() {
+  public delete(node: Node) {
+    console.log("DELETE NODE:", node)
+    // EdgeCase: List is empty
+    if (!this.head) {
+      return;
+    }
+
+    // EdgeCase: First node's value matches delete value
+    while (this.head && this.head.value === node.value) {
+      this.head = this.head.next;
+    }
+
+    let curNode = this.head;
+
+    while (curNode.next) {
+      // check if current and next value has value to delete
+      if (curNode.next.value === node.value) {
+        curNode.next = curNode.next.next;
+      } else {
+        // no matching value, increment node pointer
+        curNode = curNode.next;
+      }
+    } // while
+
+    // Edge case: If tail node is matching node, then update tail node
+    if (this.tail.value === node.value) {
+      this.tail = curNode;
+    }
+
+  } // delete
+
+  public findFirst(node: Node) {
+    console.log("LOOKING FOR FIRST OCCURENCE OF NODE:", node)
+    if(!this.head) {
+      return;
+    }
+
+    let curNode = this.head;
+
+    while(curNode) {
+      if (curNode.value === node.value) {
+        return curNode;
+      }
+      curNode = curNode.next;
+    } // while
+    // Didn't find a match
+    return null;
+  }
+
+  // Find the node with the afterValue
+  public insertAfter(insertNode: Node, beforeInsertNode: Node) {
+    const selectedNode = this.findFirst(beforeInsertNode)
+
+    if(selectedNode) {
+      // Start inserting insertNode after beforeInsertNode
+      insertNode.next = selectedNode.next;
+      // set beforeInsertNode pointer to insertNode
+      selectedNode.next = insertNode;
+    }
+  }
+
+  public toConsole() {
     const elements = [];
 
     let curNode = this.head;
@@ -54,10 +113,9 @@ class LinkedList {
       curNode = curNode.next;
     } //while
     return elements;
-
   } //toArray
 
-  toScreen(): string[] {
+  public toScreen(): string[] {
     const elements = [];
 
     let curNode = this.head;
@@ -66,7 +124,6 @@ class LinkedList {
       curNode = curNode.next;
     } //while
     return elements;
-
   } //toArray
 }
 

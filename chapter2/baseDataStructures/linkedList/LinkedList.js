@@ -31,6 +31,57 @@ class LinkedList {
             this.head = newNode;
         }
     }
+    delete(node) {
+        console.log("DELETE NODE:", node);
+        // EdgeCase: List is empty
+        if (!this.head) {
+            return;
+        }
+        // EdgeCase: First node's value matches delete value
+        while (this.head && this.head.value === node.value) {
+            this.head = this.head.next;
+        }
+        let curNode = this.head;
+        while (curNode.next) {
+            // check if current and next value has value to delete
+            if (curNode.next.value === node.value) {
+                curNode.next = curNode.next.next;
+            }
+            else {
+                // no matching value, increment node pointer
+                curNode = curNode.next;
+            }
+        } // while
+        // Edge case: If tail node is matching node, then update tail node
+        if (this.tail.value === node.value) {
+            this.tail = curNode;
+        }
+    } // delete
+    findFirst(node) {
+        console.log("LOOKING FOR FIRST OCCURENCE OF NODE:", node);
+        if (!this.head) {
+            return;
+        }
+        let curNode = this.head;
+        while (curNode) {
+            if (curNode.value === node.value) {
+                return curNode;
+            }
+            curNode = curNode.next;
+        } // while
+        // Didn't find a match
+        return null;
+    }
+    // Find the node with the afterValue
+    insertAfter(insertNode, beforeInsertNode) {
+        const selectedNode = this.findFirst(beforeInsertNode);
+        if (selectedNode) {
+            // Start inserting insertNode after beforeInsertNode
+            insertNode.next = selectedNode.next;
+            // set beforeInsertNode pointer to insertNode
+            selectedNode.next = insertNode;
+        }
+    }
     toConsole() {
         const elements = [];
         let curNode = this.head;
