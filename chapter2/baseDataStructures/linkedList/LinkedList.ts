@@ -34,12 +34,16 @@ class LinkedList {
   //EdgeCase Empty list, requires setting
   // head and tail nodes
   public prepend(newNode: Node) {
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
+    if (this.head) {
       newNode.next = this.head;
       this.head = newNode;
+    }else {
+      // set the head to the newNode
+      this.head = newNode;
+    }
+
+    if(!this.tail) {
+      this.tail = newNode;
     }
   }
 
@@ -97,9 +101,9 @@ class LinkedList {
     const selectedNode = this.findFirst(beforeInsertNode)
 
     if(selectedNode) {
-      // Start inserting insertNode after beforeInsertNode
+      // Start inserting next should point to the node after selectedNode
       insertNode.next = selectedNode.next;
-      // set beforeInsertNode pointer to insertNode
+      // reset selectedNode, so it points to the insertNode
       selectedNode.next = insertNode;
     }
   }
