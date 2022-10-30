@@ -50,7 +50,7 @@ console.log("FOUND FIRST OCCURENCE:", linkedList.findFirst(findNode1));
 console.log("OCCURENCE NOT FOUND:", linkedList.findFirst(findNode2NoMatch));
 
 // InsertAfter
-linkedList.insertAfter(insertAfterNode1, appendNode4 )
+linkedList.insertMiddle(insertAfterNode1, appendNode4 )
 
 
 const greeting = `Hello `;

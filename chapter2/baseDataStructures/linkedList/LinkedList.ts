@@ -97,7 +97,7 @@ class LinkedList {
   }
 
   // Find the node with the afterValue
-  public insertAfter(insertNode: Node, beforeInsertNode: Node) {
+  public insertMiddle(insertNode: Node, beforeInsertNode: Node) {
     const selectedNode = this.findFirst(beforeInsertNode)
 
     if(selectedNode) {

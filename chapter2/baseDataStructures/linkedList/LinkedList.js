@@ -76,7 +76,7 @@ class LinkedList {
         return null;
     }
     // Find the node with the afterValue
-    insertAfter(insertNode, beforeInsertNode) {
+    insertMiddle(insertNode, beforeInsertNode) {
         const selectedNode = this.findFirst(beforeInsertNode);
         if (selectedNode) {
             // Start inserting next should point to the node after selectedNode
