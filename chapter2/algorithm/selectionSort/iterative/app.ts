@@ -2,7 +2,7 @@ const items = [0, 99, 81, 41, 23, 22, 19, 105];
 
 function selectionSort(items: number[]): number[] {
   // Comparisons
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i <= items.length -1; i++) {
     let lowestNumberIndex = i;
     for (let j = i + 1; j <= items.length - 1; j++) {
       if (items[j] < items[lowestNumberIndex]) {
