@@ -1,5 +1,5 @@
-const logarithm = (base) => {
-    let items = 8;
+// time complexity: O(n) 
+const logarithm = (base, items) => {
     let quotient = 0;
     let divisions = 0;
 
@@ -11,4 +11,6 @@ const logarithm = (base) => {
     }
     return divisions;
 }
-console.log("How many divisions are possible?", logarithm(2));
+
+const items = 8;
+console.log("How many divisions are possible?", logarithm(2, items));
