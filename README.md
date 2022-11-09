@@ -1,1 +1,0 @@
-<h1 align="centery">Grokking Algorithms:Typescript Algorthms</h1>
