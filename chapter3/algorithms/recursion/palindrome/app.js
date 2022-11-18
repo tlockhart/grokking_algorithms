@@ -1,57 +1,27 @@
 "use strict";
-// Returns the first character of the string str
-function firstCharacter(str) {
-    return str.slice(0, 1);
-}
-;
-// Returns the last character of a string str
-function lastCharacter(str) {
-    return str.slice(-1);
-}
-;
-// Returns the string that results from removing the first
-//  and last characters from str
-function middleCharacters(str) {
-    var newString = str.slice(1, -1);
-    // console.log("NewString: " + newString);
-    return newString;
-}
-;
-function isPalindrome(str) {
-    // console.log("STR:" + str + str.length);
-    // var firstTerm = str[0];
-    // var lastTerm = lastCharacter(str);
-    // var isEqual = firstTerm === lastTerm;
-    // console.log("FirstTerm: "+firstTerm + " LastTerm: " + lastTerm + " "+ isEqual);
-    // base case #1
-    if (str.length === 0 || str.length === 1) {
+function isPalindrome(totalChars, lastIdx, str) {
+    console.log(`lastIdx: ${lastIdx}; char: ${str[lastIdx]}`);
+    // const curIdx = lastIdx;
+    let highIdx = lastIdx;
+    const lowIdx = totalChars - 1 - highIdx;
+    // Base Case: 
+    /*If we have gotten to the middle letter, or if there is 1 element, or no elements, or indexes crossed then we know the word is a palindrome*/
+    if (lowIdx >= highIdx)
         return true;
-    }
-    // base case #2
-    if (firstCharacter(str) !== lastCharacter(str)) {
+    //if the letters do not match then return false and end the recursive call
+    if (str[lowIdx] !== str[highIdx])
         return false;
-    }
-    // recursive case
-    return isPalindrome(middleCharacters(str));
+    // Recursive Case:
+    return isPalindrome(totalChars, highIdx - 1, str);
 }
-;
-var checkPalindrome = function (str) {
-    console.log("Is this word a palindrome? " + str);
-    var value = isPalindrome(str);
-    console.log(value);
-    return value;
-};
-console.log("a is Palindrome: " + checkPalindrome("a"));
-// Program.assertEqual(isPalindrome("a"), true);
-console.log("motor is Palindrome: " + checkPalindrome("motor"));
-// Program.assertEqual(isPalindrome("motor"), false);
-console.log("rotor is Palindrome: " + checkPalindrome("rotor"));
-// Program.assertEqual(isPalindrome("rotor"), true);
+console.log("a is Palindrome: " + isPalindrome("a".length, "a".length - 1, "a"));
+console.log("motor is Palindrome: " + isPalindrome("motor".length, "motor".length - 1, "motor"));
+console.log("rotor is Palindrome: " + isPalindrome("rotor".length, "rotor".length - 1, "rotor"));
 /********* To Screen:  ************/
 const container = document.getElementById("container");
 // ✅ Append HTML to `div` element
-container.insertAdjacentHTML('afterend', `<div style="background-color: lime">a is Palindrome: ${checkPalindrome("a")}</div>`);
+container.insertAdjacentHTML('afterend', `<div style="background-color: lime">a is Palindrome: ${isPalindrome("a".length, "a".length - 1, "a")}</div>`);
 // ✅ Append HTML to `div` element
-container.insertAdjacentHTML('afterend', `<div style="background-color: lime">motor is Palindrome: ${checkPalindrome("motor")}</div>`);
+container.insertAdjacentHTML('afterend', `<div style="background-color: lime">motor is Palindrome: ${isPalindrome("motor".length, "motor".length - 1, "motor")}</div>`);
 // ✅ Append HTML to `div` element
-container.insertAdjacentHTML('afterend', `<div style="background-color: lime">rotor is Palindrome: ${checkPalindrome("rotor")}</div>`);
+container.insertAdjacentHTML('afterend', `<div style="background-color: lime">rotor is Palindrome: ${isPalindrome("rotor".length, "rotor".length - 1, "rotor")}</div>`);
