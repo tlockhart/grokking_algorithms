@@ -11,7 +11,6 @@ function getMid(low: number, high:number) {
 
 const binarySearch = (items: number[], item: number, low: number, high: number): number | null | undefined => {
   // defaults:
-  // let index = low;
   let lowIndex = low;
   let highIndex = high;
 
@@ -33,6 +32,7 @@ const binarySearch = (items: number[], item: number, low: number, high: number):
     }
 
   console.log("lowIndex:", lowIndex, "; highIndex:", highIndex);
+  // remember to return the recursive call
   return binarySearch(items,item, lowIndex, highIndex);
 };
 
